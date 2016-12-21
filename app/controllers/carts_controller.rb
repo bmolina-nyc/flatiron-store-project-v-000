@@ -3,7 +3,6 @@ class CartsController < ApplicationController
 
   def show 
     @current_cart = Cart.find_by(id: params[:id])
-
   end
 
   def checkout
