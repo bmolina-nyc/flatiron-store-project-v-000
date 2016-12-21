@@ -1,7 +1,6 @@
 class LineItemsController < ApplicationController
 
   def create
-  # raise params.inspect
     user = current_user
 
     if user.current_cart_id.nil?

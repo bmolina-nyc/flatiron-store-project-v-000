@@ -5,5 +5,5 @@
 <% end %>
 
 <% @items.each do |item| %>
-  <p><%= item.title %> | <%= "$#{item.price.to_f/100}" %> | Inventory: <%= item.inventory %><%= button_to 'Add to Cart', line_items_path(item_id: item) %></p>
+  <p><%= item.title %> | <%= "$#{item.price.to_f/100}" %> | Inventory: <%= item.inventory %><%= button_to 'Add to Cart', line_items_path(item_id: item) if @user %></p>
 <% end %>

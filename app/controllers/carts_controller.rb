@@ -3,6 +3,7 @@ class CartsController < ApplicationController
 
   def show 
     @current_cart = Cart.find_by(id: params[:id])
+
   end
 
   def checkout
@@ -13,7 +14,7 @@ class CartsController < ApplicationController
       item.inventory = (item.inventory - line_item.quantity) 
       item.save
     end
-    @current_cart.items.clear
+    @current_cart.items.clear && @current_cart.items.clear
     @current_cart.save
 
     redirect_to cart_path(@current_cart)
