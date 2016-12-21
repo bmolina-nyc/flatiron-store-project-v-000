@@ -1,9 +1,12 @@
 class StoreController < ApplicationController
 
   def index
+ 
     @categories = Category.all
     @items = Item.where.not(inventory: 0)
     @user = current_user
+
+    #show a cart if its not empty or hasn't been checked out
     # if !@user.current_cart_id.nil? && Cart.find(@user.current_cart_id).items.count > 0 
     #   @cart = Cart.find(@user.current_cart_id)
     # end
