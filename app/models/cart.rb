@@ -4,27 +4,24 @@ class Cart < ActiveRecord::Base
   has_many :items, through: :line_items 
 
   def total
-    self.items.collect{ |i| i.price}.inject(:+)
+    total = []
+    self.line_items.each do |li|
+      item = Item.find(li.id)
+      total << item.price * li.quantity
+    end
+    total.inject(:+)
   end
 
   def add_item(item_id)
-
-
     item = Item.find(item_id)
     line_item = line_items.detect { |li| li.item_id == item.id }
 
     if line_item
       line_item.quantity += 1 
-      item.inventory -= 1 
       line_item.save
-      item.save 
-      self.save
     else
-      line_item = LineItem.new(cart_id: self.id, item_id: item.id, cart: self)
-      item.inventory -= 1 
-      item.save 
+      line_item = LineItem.new(cart_id: self.id, item_id: item.id)
     end
-
     line_item
   end
   

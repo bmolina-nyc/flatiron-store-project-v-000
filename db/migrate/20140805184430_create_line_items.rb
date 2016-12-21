@@ -4,7 +4,6 @@ class CreateLineItems < ActiveRecord::Migration
       t.integer :cart_id
       t.integer :item_id
       t.integer :quantity, :default => 1 
-      t.string :cart
     end
   end
 end
