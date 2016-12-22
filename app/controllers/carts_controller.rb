@@ -13,7 +13,7 @@ class CartsController < ApplicationController
       item.inventory = (item.inventory - line_item.quantity) 
       item.save
     end
-    @current_cart.items.clear && @current_cart.items.clear
+    @current_cart.items.clear 
     @current_cart.save
 
     redirect_to cart_path(@current_cart)
