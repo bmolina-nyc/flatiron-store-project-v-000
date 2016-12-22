@@ -4,12 +4,11 @@ class Cart < ActiveRecord::Base
   has_many :items, through: :line_items 
 
   def total
-    total = []
+    total = 0 
     self.line_items.each do |li|
-      item = Item.find(li.item_id)
-      total << item.price * li.quantity
+      total +=  (li.item.price * li.quantity)
     end
-    total.inject(:+)
+    total
   end
 
   def add_item(item_id)
