@@ -14,4 +14,4 @@ Item.all.each do |item|
   counter += 1
 end
 
-User.create(email: "bruce.d.molina@gmail.com", password: "12345679")
+User.create(email: "bruce.d.molina@gmail.com", password: "testtest")
